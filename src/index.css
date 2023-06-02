@@ -93,3 +93,33 @@ body{
     }
   }
 
+
+
+  .paginate{
+    display: flex;
+    align-items: center;
+    justify-content:end;
+  }
+
+  .paginate li {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgb(123, 122, 122) ;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    transition: .8s;
+  }
+
+
+  
+  .paginate li:hover {
+    scale: 1.15;
+    background-color: rgb(73, 73, 73);
+    color: white;
+    cursor: pointer;
+
+  }
+
