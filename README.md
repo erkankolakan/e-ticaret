@@ -3,8 +3,9 @@
 Pro yaptığımız projede ufak çaplı e-ticaret sayfası yapmaya çalıştım.
 
 ## Görseller
-![Uploading Ekran görüntüsü 2023-06-55185437.jpg…]()
 
+
+![Ekran görüntüsü 2023-06-55185437](https://github.com/erkankolakan/e-ticaret/assets/126770706/ef7516f2-adc8-46bc-9218-ab4365fd6ce6)
 
 
 
