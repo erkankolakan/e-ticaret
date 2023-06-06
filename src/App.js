@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Detail from "./pages/Detail";
 import { DenemeProvider } from "./Deneme";
 import Cart from "./pages/Cart";
+import Search from "./pages/Search";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/products/:id" element={<Detail/>}/> 
             <Route path="/cart" element={<Cart />}/> 
+            <Route path="/products/:search" element={<Search/>}/> 
           </Routes>
         </Router>
       </PageContainer>
