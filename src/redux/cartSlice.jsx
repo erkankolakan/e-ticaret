@@ -40,34 +40,34 @@ const cartSlice = createSlice({
 
 if(isItemCart){
     //tarama sonucunda isItemCart böyle birşey bulduysan state içindeki kartları maple ve bu fonksiyonu onlara uygula
-    const tempCart = state.cart.map( item => {
+    const tempCart = state.carts.map( item => {
         if(item.id === action.payload.id){
             //item şuan üzerinde olduğumuz karttır biz item.id diyerek şuan üzerinde olduğumuz kartın id değerini almış oluruz.
+            
 
             let temQty = item.quantity + action.payload.quantity;
-            let tempTotalPrice = tempQty + item.price;
+            let tempTotalPrice = temQty  + item.price;
         return{
-            ...item, quantity: tempQty, totalPrice : tempTotalPrice //önemli bir kullanım tarzı tek spread operatörü ile iki değişkene aynı anda değer ataya biliyoruz.
+            ...item, quantity: temQty , totalPrice : tempTotalPrice //önemli bir kullanım tarzı tek spread operatörü ile iki değişkene aynı anda değer ataya biliyoruz.
 
 // ...item: Bu ifade, "item" adlı bir değişkenin değerini kopyalamak veya başka bir nesneye genişletmek için kullanılan bir spread operatörüdür.
 //quantity: tempQty: Bu ifade, yeni oluşturulan nesnenin quantity özelliğine tempQty değerini atar. tempQty değişkeninin değeri bu özelliğe atanır.
 //totalPrice: tempTotalPrice: Bu ifade, yeni oluşturulan nesnenin totalPrice özelliğine tempTotalPrice değerini atar. tempTotalPrice değişkeninin değeri bu özelliğe atanır.
 //Özetlemek gerekirse, bu kod, mevcut bir item nesnesinin tüm özelliklerini kopyalayarak yeni bir nesne oluşturur. Bu yeni nesnenin quantity ve totalPrice özellikleri, belirli tempQty ve tempTotalPrice değerlerine atanır. Yani, item nesnesiyle aynı özellikleri içeren bir kopya nesne oluşturulurken, quantity ve totalPrice özelliklerinin değerleri değiştirilmiş olur.
 
-        }
+        };
         }
         else{
-            return item
+            return item;
         }
+    });
 
         state.carts = tempCart;
-        storeInLocalStorage(state.carts)
-
-    })
+        storeInLocalStorage(state.carts);
 }else{
     state.carts.push(action.payload)
     storeInLocalStorage(state.carts)
-}
+
 
 //Bu fonksiyon iki parametre alır: state ve action. state, mevcut uygulama durumunu temsil eden bir nesnedir ve action, bu eylem oluşturucu fonksiyonuna sağlanan eylem nesnesini temsil eder.
 
@@ -87,8 +87,8 @@ if(isItemCart){
 
     //bu herhangi bir cartta bulunan ürünü silmek için oluşturmuş oluşturmuş olduğumuz bir fonkisiyondur.
     removeFromCart:(state,action) => {
-        const tempCart = state.carts.filter(item => item.id !== action.payload)
-        state.carts = tempCart
+        const tempCart = state.carts.filter(item => item.id !== action.payload);
+        state.carts = tempCart;
         storeInLocalStorage(state.carts)
 // bu fonksiyon ile dışardan bir id göndericem gönderidğim bu id üzerinde de filtreleme işlemi yapıcam farklı olanları flitrele aynı olanları sil çünkü bu fonksiyonu biz silme butonunda kullanacağız. 
 
@@ -97,24 +97,23 @@ if(isItemCart){
             
 //kartımın içindeki tüm ürünleri silmek isteiğim zaman kullancağım fonksiyon 
     clearCart : (state) => {
-        state.carts = []
+        state.carts = [];
         storeInLocalStorage(state.carts)
     },
 
     //karta kaç tane ürün var, toplam karttaki ürün ne kadar bunu hesaplayacağız
     getCartTotal: (state) => {
-            state.totalAmount = state.carts.reduce((cartTotal , cartItem) => {
-                return cartTotal += cartItem.totalPrice
-            },0)
+        state.totalAmount = state.carts.reduce((cartTotal, cartItem) => {
+            return cartTotal += cartItem.price * cartItem.quantity;
+        }, 0);
     //reduce() yöntemi, bir dizi öğesini tek bir değere dönüştürmek için kullanılır. Bu yöntem, dizinin her öğesini dolaşırken belirli bir işlemi uygular ve sonuç olarak tek bir değer döndürür.
-    state.itemCount = state.carts.lenght //kartımın içinde kaç tane ürün var onu tespit edebiliyoruz.
-    }
-
+    state.itemCount = state.carts.length; //kartımın içinde kaç tane ürün var onu tespit edebiliyoruz.
 }
-)
-
+},
+});
 
 export const {addToCart,removeFromCart,clearCart,getCartTotal} = cartSlice.actions
-
-
 export default cartSlice.reducer
+
+
+

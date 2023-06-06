@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
+import {useDispatch} from 'react-redux'
+import { addToCart } from '../../redux/cartSlice'
+
+
 
 const DetailComp = ({productDetail}) => {
-  console.log(productDetail,"bomb")
+
+  const dispatch = useDispatch()
+
+
   const [quantity, setQuantity] = useState(0)
 
 
@@ -12,10 +19,11 @@ const DetailComp = ({productDetail}) => {
 
   const  increment = () => {
     if (quantity < productDetail?.rating?.count) setQuantity(quantity + 1) 
-    setQuantity(quantity + 1 )
+    setQuantity(quantity + 1 )  
   }
 
   const addBasket = ()  => {
+    dispatch(addToCart({id: productDetail?.id, title: productDetail?.title, image: productDetail?.image, price:productDetail?.price, quantity:quantity }))
     
   }
 
@@ -33,7 +41,7 @@ const DetailComp = ({productDetail}) => {
               <div className='text-4xl font-bold'>Price  : {productDetail?.price} TL</div>
                 <div className='flex items-center gap-5 my-4 '>
                   <div onClick={decrement} className='text-2xl cursor-pointer'>-</div>
-                    <input className='w-[50px] text-center text-3xl font-bold' value="text" value={quantity} />
+                    <input className='w-[50px] text-center text-3xl font-bold'  value={quantity}/>
                   <div onClick={increment} className='text-2xl cursor-pointer'>+</div>
                 </div>
             <div onClick={addBasket} className=' my-10 border w-200 h-16 flex items-center justify-center hover:bg-gray-200 duration-200 cursor-pointer '>Sepete Ekle</div>
