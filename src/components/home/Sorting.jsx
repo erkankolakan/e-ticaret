@@ -1,11 +1,12 @@
 import React from 'react'
 
-const Sorting = () => {
+const Sorting = ({setSort}) => {
   return (
 <div className='bg-gray-100 my-5 p-5 flex item-center justify-end' >
-    <select className='bg-white py-3 px-3 ' >
+    <select onChange={e => setSort(e.target.value) } className='bg-white py-3 px-3 ' >
 
-    <option disabled value=''>Varsayılan Sıralama</option> //disabled özelliği tıklanamaz yapar
+
+    <option disabled value=''>Varsayılan Sıralama</option> 
     <option value='inc'>En Yüksek Fiyat</option>
     <option value='dec'>En Düşük Fiyat</option>
 

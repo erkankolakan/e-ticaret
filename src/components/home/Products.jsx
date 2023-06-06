@@ -6,7 +6,7 @@ import Product from './Product';
 import ReactPaginate from 'react-paginate';
 
 
-const Products = ({category}) => {
+const Products = ({category , sort}) => {
 
   
   const dispatch = useDispatch();
@@ -22,7 +22,6 @@ const Products = ({category}) => {
   const currentItems = products.slice(itemOffset, endOffset); //burada bizim productı currentItems içine attıığı için aşağıda onu çağırıcaz
   const pageCount = Math.ceil(products.length / itemsPerPage);
 
-  // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % products.length;
     console.log(
@@ -43,6 +42,8 @@ const Products = ({category}) => {
         
     },[dispatch ,category])
 
+  
+
 
   return (
     <div>
@@ -51,7 +52,7 @@ const Products = ({category}) => {
         <>
           <div className='flex flex-wrap'> 
               {
-                  currentItems?.map((product,i) => (
+                  currentItems?.sort((a,b) => sort == "inc" ? a.price-b.price : sort == "dec" ? b.price-a.price : null)?.map((product,i) => (
                       <Product key={i} product={product} />
                   ))
               }

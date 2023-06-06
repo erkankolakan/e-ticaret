@@ -17,7 +17,7 @@ const Category = ({setCategory}) => {
 
   return (
     <div className='w-1/6 bg-gray-100 p-5 max-h-screen'>
-        <div className='border-b pb-1 text-xl font-bold'>
+        <div className='border-b pb-1 text-xl font-bold '>
             KATEGORİ
         </div>
         {
