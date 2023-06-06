@@ -1,10 +1,29 @@
-# Getting Started with Create React App
+# E-Ticaret Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Pro yaptığımız projede ufak çaplı e-ticaret sayfası yapmaya çalıştım.
 
-## Available Scripts
+## Görseller
+![Uploading Ekran görüntüsü 2023-06-55185437.jpg…]()
 
-In the project directory, you can run:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### `npm start`
 
