@@ -11,6 +11,7 @@ Pro yaptığımız projede ufak çaplı e-ticaret sayfası yapmaya çalıştım.
 
 
 
+https://e-ticaret-erkankolakan.vercel.app
 
 
 
@@ -26,8 +27,7 @@ Pro yaptığımız projede ufak çaplı e-ticaret sayfası yapmaya çalıştım.
 
 
 
-
-### `npm start`
+##Site Linki
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
